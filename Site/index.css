@@ -1,0 +1,77 @@
+body{
+    background-color: rgb(56, 56, 136);
+}
+
+.corpo{
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.title{
+    color:aliceblue;
+    text-align: right;
+    font-size: 100px;
+    grid-area: 1/2;
+    height:100px;
+    width: 100px;
+
+}
+
+.box1{
+    grid-area: 2/2/5;
+    width: 250px;
+    height: 200px;
+}
+
+.pcgamer1{
+    border-radius: 8px;
+    width: 100%;
+    color: antiquewhite;
+    text-align: center;
+}
+
+
+.box2{
+    grid-area: 2/3/4/3;
+    width: 250px;
+    height: 200px;
+}
+
+.memram{
+    width: 70%;
+    border-radius: 8px;
+    color: antiquewhite;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+
+.info{
+    grid-area: 5/2;
+}
+
+.cont{
+    grid-area: 6/2;
+}
