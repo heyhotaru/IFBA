@@ -179,8 +179,8 @@ public class efetuarlocacao extends javax.swing.JFrame {
         try{
             pmt = con.prepareStatement("INSERT INTO LOCACAO(CODIGO, HORAENTRADA, DATAENTRADA, SITUACAO, PLACAAUTOMOVEL, MARCA, MODELO, LARGURA, COMPRIMENTO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pmt.setInt(1, Integer.parseInt(codigo.getText()));
-            pmt.setTipo(2, Tipo.parseTipo(horaentrada.getText()));
-            pmt.setTipo(3, Tipo.parseTipo(dataentrada.getText()));
+            pmt.setString(2, horaentrada.getText());
+            pmt.setString(3, dataentrada.getText());
             pmt.setString(5, situacao.getText());
             pmt.setString(6, placaautomovel.getText());
             pmt.setString(7, marca.getText());

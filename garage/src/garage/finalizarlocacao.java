@@ -107,8 +107,8 @@ public class finalizarlocacao extends javax.swing.JFrame {
         try{
             pmt = con.prepareStatement("INSERT INTO LOCACAO(PLACAAUTOMOVEL, HORASAIDA, DATASAIDA) VALUES(?, ?, ?)");
             pmt.setString(1, placaautomovel.getText());
-            pmt.setTipo(2, Tipo.parseTipo(horasaida.getText()));
-            pmt.setTipo(3, Tipo.parseTipo(datasaida.getText()));
+            pmt.setString(2, horasaida.getText());
+            pmt.setString(3, datasaida.getText());
             pmt.executeUpdate();
         }
         catch(SQLException ex){
