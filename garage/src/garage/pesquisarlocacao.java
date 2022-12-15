@@ -19,9 +19,16 @@ public class pesquisarlocacao extends javax.swing.JFrame {
 
     private ResultSet rs;
     private PreparedStatement pmt;
+    Connection con;
     
     public pesquisarlocacao() {
         initComponents();
+        try {
+            Class.forName("org.firebirdsql.jdbc.FBDriver");
+            con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

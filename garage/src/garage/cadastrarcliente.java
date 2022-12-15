@@ -1,11 +1,13 @@
 package garage;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * Daniel Dos Reis Cerqueira
@@ -22,6 +24,12 @@ public class cadastrarcliente extends javax.swing.JFrame {
     
     public cadastrarcliente() {
         initComponents();
+        try {
+            Class.forName("org.firebirdsql.jdbc.FBDriver");
+            con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -135,6 +143,7 @@ public class cadastrarcliente extends javax.swing.JFrame {
         catch(SQLException ex){
             Logger.getLogger(cadastrarcliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
     }//GEN-LAST:event_cadastrarclienteActionPerformed
 
     /**

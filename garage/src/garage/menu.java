@@ -12,13 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class menu extends javax.swing.JFrame {
-
+    
+    Connection con;
     
     public menu() {
+        initComponents();
         try {
-            initComponents();
             Class.forName("org.firebirdsql.jdbc.FBDriver");
-            Connection con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
+            con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
         }

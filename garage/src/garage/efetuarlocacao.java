@@ -1,6 +1,7 @@
 package garage;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,12 @@ public class efetuarlocacao extends javax.swing.JFrame {
     
     public efetuarlocacao() {
         initComponents();
+        try {
+            Class.forName("org.firebirdsql.jdbc.FBDriver");
+            con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

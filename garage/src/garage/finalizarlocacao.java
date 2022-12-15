@@ -1,11 +1,13 @@
 package garage;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.*;
 
 /*
  * Daniel Dos Reis Cerqueira
@@ -21,6 +23,12 @@ public class finalizarlocacao extends javax.swing.JFrame {
             
     public finalizarlocacao() {
         initComponents();
+        try {
+            Class.forName("org.firebirdsql.jdbc.FBDriver");
+            con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

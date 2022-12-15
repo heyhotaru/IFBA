@@ -1,5 +1,11 @@
 package garage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Daniel Dos Reis Cerqueira
  * Gilmar
@@ -9,10 +15,18 @@ package garage;
 
 public class locacao extends javax.swing.JFrame {
 
+    
+    Connection con;
+    
     public locacao() {
         initComponents();
+        try {
+            Class.forName("org.firebirdsql.jdbc.FBDriver");
+            con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
