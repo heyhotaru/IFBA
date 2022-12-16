@@ -17,6 +17,8 @@ public class locacao extends javax.swing.JFrame {
 
     
     Connection con;
+    efetuarlocacao el;
+    finalizarlocacao fl;
     
     public locacao() {
         initComponents();
@@ -26,6 +28,8 @@ public class locacao extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        el = new efetuarlocacao();
+        fl = new finalizarlocacao();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -35,7 +39,7 @@ public class locacao extends javax.swing.JFrame {
         efetuarlocacao = new javax.swing.JButton();
         finalizarlocacao = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setText("LOCAÇÃO");
 
@@ -87,12 +91,12 @@ public class locacao extends javax.swing.JFrame {
 
     private void efetuarlocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efetuarlocacaoActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para o registro de uma locação
-        new efetuarlocacao().setVisible(true);
+        el.setVisible(true);
     }//GEN-LAST:event_efetuarlocacaoActionPerformed
 
     private void finalizarlocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarlocacaoActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para o registro do fim de uma locação
-        new finalizarlocacao().setVisible(true);
+       fl.setVisible(true);
     }//GEN-LAST:event_finalizarlocacaoActionPerformed
 
     /**

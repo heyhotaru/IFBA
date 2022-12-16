@@ -16,6 +16,9 @@ import java.util.logging.Logger;
 public class pesquisas extends javax.swing.JFrame {
 
     Connection con;
+    pesquisarcliente pc;
+    pesquisarvagas pv;
+    pesquisarlocacao pl;
     
     public pesquisas() {
         initComponents();
@@ -25,6 +28,9 @@ public class pesquisas extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        pc = new pesquisarcliente();
+        pv = new pesquisarvagas();
+        pl = new pesquisarlocacao();
     }
     
     @SuppressWarnings("unchecked")
@@ -36,7 +42,7 @@ public class pesquisas extends javax.swing.JFrame {
         pesquisarvaga = new javax.swing.JButton();
         pesquisarlocacao = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("PESQUISAS");
 
@@ -82,14 +88,14 @@ public class pesquisas extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pesquisarcliente)
                     .addComponent(pesquisarvaga)
                     .addComponent(pesquisarlocacao))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,17 +103,17 @@ public class pesquisas extends javax.swing.JFrame {
 
     private void pesquisarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarclienteActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para a pesquisa de clientes
-        new pesquisarcliente().setVisible(true);
+        pc.setVisible(true);
     }//GEN-LAST:event_pesquisarclienteActionPerformed
 
     private void pesquisarvagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarvagaActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para a pesquisa de vagas
-        new pesquisarvagas().setVisible(true);
+        pv.setVisible(true);
     }//GEN-LAST:event_pesquisarvagaActionPerformed
 
     private void pesquisarlocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarlocacaoActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para a pesquisa de locações
-        new pesquisarlocacao().setVisible(true);
+       pl.setVisible(true);
     }//GEN-LAST:event_pesquisarlocacaoActionPerformed
 
     /**

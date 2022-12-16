@@ -51,7 +51,13 @@ public class pesquisarcliente extends javax.swing.JFrame {
         nome = new javax.swing.JTextField();
         endereco = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfActionPerformed(evt);
+            }
+        });
 
         pesquisarcliente.setText("PESQUISAR");
         pesquisarcliente.addActionListener(new java.awt.event.ActionListener() {
@@ -99,18 +105,19 @@ public class pesquisarcliente extends javax.swing.JFrame {
                                 .addComponent(cpf))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(144, 144, 144)
-                        .addComponent(pesquisarcliente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel1)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                        .addComponent(pesquisarcliente)))
+                .addContainerGap(126, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(codigoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,11 +152,16 @@ public class pesquisarcliente extends javax.swing.JFrame {
             codigoc.setText(rs.getString("codigoc"));
             nome.setText(rs.getString(("nome")));
             endereco.setText(rs.getString("endereco"));
+            cpf.setText(rs.getString("cpf"));
         }
         catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(pesquisarcliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_pesquisarclienteActionPerformed
+
+    private void cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpfActionPerformed
 
     /**
      * @param args the command line arguments

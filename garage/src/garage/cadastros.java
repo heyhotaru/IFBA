@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class cadastros extends javax.swing.JFrame {
 
     Connection con;
-    
+    cadastrarcliente c;
     public cadastros() {
         initComponents();
         try {
@@ -25,6 +25,7 @@ public class cadastros extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        c = new  cadastrarcliente();
     }
 
     
@@ -36,7 +37,7 @@ public class cadastros extends javax.swing.JFrame {
         cadastrarcliente = new javax.swing.JButton();
         cadastrarvagas = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("CADASTROS");
 
@@ -85,7 +86,7 @@ public class cadastros extends javax.swing.JFrame {
 
     private void cadastrarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarclienteActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para o cadastro de clientes
-        new cadastrarcliente().setVisible(true);
+        c.setVisible(true);
     }//GEN-LAST:event_cadastrarclienteActionPerformed
 
     private void cadastrarvagasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarvagasActionPerformed

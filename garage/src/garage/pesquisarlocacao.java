@@ -55,9 +55,9 @@ public class pesquisarlocacao extends javax.swing.JFrame {
         horasaida = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        situacao = new javax.swing.JTextField();
         marca = new javax.swing.JTextField();
         codigo = new javax.swing.JTextField();
+        situacao = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -65,7 +65,7 @@ public class pesquisarlocacao extends javax.swing.JFrame {
         placaautomovel = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel5.setText("HORA DE ENTRADA");
 
@@ -208,9 +208,9 @@ public class pesquisarlocacao extends javax.swing.JFrame {
         // quando o usuário clicar nesse botão o conteúdo dos textfield serão preenchidos com os dados do banco
         try {
             Class.forName("org.firebirdsql.jdbc.FBDriver");
-            Connection con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
+            con = DriverManager.getConnection("jdbc:firebirdsql:localhost:c:\\banco\\garage77.FDB", "sysdba", "masterkey");
             Statement st = con.createStatement();
-            rs = st.executeQuery("codigo, horaentrada, dataentrada, horasaida, datasaida, situacao, placaautomovel, marca, modelo, largura, comprimento from locacao");
+            rs = st.executeQuery("select codigo, horaEntrada, dataentrada, horasaida, datasaida, situacao, placaautomovel, marca, modelo, largura, comprimento from locacao");
             rs.next();
             codigo.setText(rs.getString(("codigo")));
             horaentrada.setText(rs.getString(("horaentrada")));

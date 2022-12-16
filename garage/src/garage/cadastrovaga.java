@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * Daniel Dos Reis Cerqueira
@@ -45,7 +46,7 @@ public class cadastrovaga extends javax.swing.JFrame {
         cadastrarvaga = new javax.swing.JButton();
         cobertura = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("CADASTRO DE VAGA");
 
@@ -71,7 +72,7 @@ public class cadastrovaga extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(170, 170, 170)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,6 +136,7 @@ public class cadastrovaga extends javax.swing.JFrame {
         catch(SQLException ex){
             Logger.getLogger(cadastrovaga.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(null, "Vaga cadastrada com sucesso!");
     }//GEN-LAST:event_cadastrarvagaActionPerformed
 
     /**

@@ -20,7 +20,7 @@ public class finalizarlocacao extends javax.swing.JFrame {
     private ResultSet rs;
     private PreparedStatement pmt;
     Connection con;
-            
+
     public finalizarlocacao() {
         initComponents();
         try {
@@ -43,15 +43,16 @@ public class finalizarlocacao extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        placaautomovel = new javax.swing.JTextField();
+        codigo = new javax.swing.JTextField();
         datasaida = new javax.swing.JTextField();
         horasaida = new javax.swing.JTextField();
         finalizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        situacao = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setText("PLACA");
+        jLabel2.setText("CÓDIGO LOCAÇÃO");
 
         jLabel3.setText("DATA DE SAÍDA");
 
@@ -66,24 +67,39 @@ public class finalizarlocacao extends javax.swing.JFrame {
 
         jLabel1.setText("FINALIZAR LOCAÇÃO");
 
+        situacao.setText("SITUAÇÃO");
+        situacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                situacaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(finalizar)
-                    .addComponent(jLabel1)
-                    .addComponent(placaautomovel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datasaida, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(horasaida))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(horasaida, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(datasaida, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(finalizar)
+                                .addGap(48, 48, 48))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(situacao, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(89, 89, 89))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +109,7 @@ public class finalizarlocacao extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(placaautomovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -102,9 +118,11 @@ public class finalizarlocacao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(horasaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(27, 27, 27)
+                .addComponent(situacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addComponent(finalizar)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,16 +131,25 @@ public class finalizarlocacao extends javax.swing.JFrame {
     private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
         //quandoo o usuário clicar nesse botão tudo o programa vai pegar e salvar tudo que estiver nos textfield
         try{
-            pmt = con.prepareStatement("INSERT INTO LOCACAO(PLACAAUTOMOVEL, HORASAIDA, DATASAIDA) VALUES(?, ?, ?)");
-            pmt.setString(1, placaautomovel.getText());
-            pmt.setString(2, horasaida.getText());
-            pmt.setString(3, datasaida.getText());
+            pmt = con.prepareStatement("UPDATE LOCACAO SET HORASAIDA = ?, DATASAIDA = ?, SITUACAO = 'INATIVO' WHERE CODIGO = ? ");
+            pmt.setString(3, codigo.getText());
+            pmt.setString(1, horasaida.getText());
+            pmt.setString(2, datasaida.getText());
+            situacao.setText("INATIVO");
             pmt.executeUpdate();
         }
         catch(SQLException ex){
             Logger.getLogger(cadastrarcliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        JOptionPane.showMessageDialog(null, "Locação finalizada com sucesso!");
+        
     }//GEN-LAST:event_finalizarActionPerformed
+
+    private void situacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_situacaoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_situacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +187,7 @@ public class finalizarlocacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField codigo;
     private javax.swing.JTextField datasaida;
     private javax.swing.JButton finalizar;
     private javax.swing.JTextField horasaida;
@@ -167,6 +195,6 @@ public class finalizarlocacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField placaautomovel;
+    private javax.swing.JTextField situacao;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,6 +14,9 @@ import java.util.logging.Logger;
 public class menu extends javax.swing.JFrame {
     
     Connection con;
+    cadastros c;
+    pesquisas p;
+    locacao l;
     
     public menu() {
         initComponents();
@@ -23,6 +26,9 @@ public class menu extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        c = new cadastros();
+        l = new locacao();
+        p = new pesquisas();
     }
 
     /**
@@ -97,17 +103,17 @@ public class menu extends javax.swing.JFrame {
 
     private void cadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrosActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para selecionar o tipo de cadastro desejado
-        new cadastros().setVisible(true);
+       c.setVisible(true);
     }//GEN-LAST:event_cadastrosActionPerformed
 
     private void pesquisasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisasActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para selecionar o tipo de pesquisa desejada
-        new pesquisas().setVisible(true);
+        p.setVisible(true);
     }//GEN-LAST:event_pesquisasActionPerformed
 
     private void locacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locacaoActionPerformed
         // ao clicar nesse botão é exibido ao usuário a tela para selecionar o tipo de pesquisa desejada
-        new cadastros().setVisible(true);
+        l.setVisible(true);
     }//GEN-LAST:event_locacaoActionPerformed
 
     /**
